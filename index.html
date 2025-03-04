@@ -7,12 +7,41 @@
     <title>GFMAlimentos</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .arrow-class {
+            animation: ioio 2s infinite ease-in-out;
+        }
+
+        @keyframes ioio {
+            0% {
+                transform: translateY(-10px);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
 </head>
 
 <body class="min-h-screen bg-white">
 
     <div id="app" class="flex flex-col items-center justify-center min-h-screen">
-        <div class="relative w-full overflow-hidden">
+
+        <header class="header-class flex flex-col items-center justify-center h-svh">
+
+            <div class="logo-class flex flex-col items-center justify-center gap-24">
+                <img class="w-1/2" src="./public/logo.svg" alt="GFMalimentos" />
+                <img class="arrow-class h-12 md:h-16" src="./public/arrow.svg" alt="Rolar para baixo" />
+            </div>
+
+        </header>
+        <div class="relative w-full -mt-9 overflow-hidden">
             <!-- Contêiner das Imagens -->
             <div id="carousel" class="flex transition-opacity duration-500" :style="{ opacity: currentImageOpacity }">
                 <img v-for="(image, index) in images" :key="index" :src="image" alt="Imagem"
@@ -40,10 +69,10 @@
             methods: {
                 startCarousel() {
                     setTimeout(() => {
-                        this.fadeOut();
+                        this.fadeOutImgCarousel();
                     }, 3000); // Tempo antes de iniciar a transição (3 segundos)
                 },
-                fadeOut() {
+                fadeOutImgCarousel() {
                     this.currentImageOpacity = 0; // Fade out
 
                     setTimeout(() => {
