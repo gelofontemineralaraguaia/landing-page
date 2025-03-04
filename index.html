@@ -41,7 +41,20 @@
             </div>
 
         </header>
-        <div class="relative w-full -mt-9 overflow-hidden">
+        <div class="relative w-full -mt-10 overflow-hidden">
+
+            <!-- Camada de Texto -->
+            <div class="texto-class absolute top-0 left-0 w-full z-10">
+                <!-- Palavras -->
+                <div v-for="(palavra, index) in palavras" :key="index"
+                    class="texto mt-8 flex items-center justify-center">
+                    <template v-for="(letra, letraIndex) in palavra">
+                        <img :key="letraIndex" class="letra max-h-4 sm:max-h-6 md:max-h-10 lg:max-h-14 flex-1"
+                            :src="`./public/tipografia/${letra}.svg`" :alt="letra" />
+                    </template>
+                </div>
+            </div>
+
             <!-- Contêiner das Imagens -->
             <div id="carousel" class="flex transition-opacity duration-500" :style="{ opacity: currentImageOpacity }">
                 <img v-for="(image, index) in images" :key="index" :src="image" alt="Imagem"
@@ -54,7 +67,7 @@
         new Vue({
             el: '#app',
             data: {
-                palavras : [
+                palavras: [
                     ['m', 'o', 'r', 'o'],
                     ['n', 'u', 'm', "_", 'p', 'a', 'i', 's'],
                     ['t', 'r', 'o', 'p', 'i', 'c', 'a', 'l'],
