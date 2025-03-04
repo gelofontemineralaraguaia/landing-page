@@ -10,16 +10,49 @@
 </head>
 
 <body class="min-h-screen bg-white">
-    <div id="app" class="flex flex-col min-h-screen">
-        
+
+    <div id="app" class="flex flex-col items-center justify-center min-h-screen">
+        <div class="relative w-full overflow-hidden">
+            <!-- Contêiner das Imagens -->
+            <div id="carousel" class="flex transition-opacity duration-500" :style="{ opacity: currentImageOpacity }">
+                <img v-for="(image, index) in images" :key="index" :src="image" alt="Imagem"
+                    class="w-full flex-shrink-0" v-show="currentIndex === index">
+            </div>
+        </div>
     </div>
+
     <script>
         new Vue({
             el: '#app',
-            data: {},
-            mounted() { },
-            methods: {},
-            beforeDestroy() { }
+            data: {
+                images: [
+                    './public/modelos/freepik__the-style-is-candid-image-photography-with-natural__16181.jpg',
+                    './public/modelos/freepik__the-style-is-candid-image-photography-with-natural__16182.jpg',
+                    './public/modelos/freepik__the-style-is-candid-image-photography-with-natural__16183.jpg',
+                    './public/modelos/freepik__the-style-is-candid-image-photography-with-natural__16184.jpg',
+                ],
+                currentIndex: 0,
+                currentImageOpacity: 1
+            },
+            mounted() {
+                this.startCarousel();
+            },
+            methods: {
+                startCarousel() {
+                    setTimeout(() => {
+                        this.fadeOut();
+                    }, 3000); // Tempo antes de iniciar a transição (3 segundos)
+                },
+                fadeOut() {
+                    this.currentImageOpacity = 0; // Fade out
+
+                    setTimeout(() => {
+                        this.currentIndex = (this.currentIndex + 1) % this.images.length; // Avança para a próxima imagem
+                        this.currentImageOpacity = 1; // Fade in
+                        this.startCarousel(); // Reinicia o ciclo
+                    }, 500); // Tempo de fade out (0.5 segundos)
+                }
+            }
         });
     </script>
 </body>
