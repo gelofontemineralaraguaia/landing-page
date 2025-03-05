@@ -42,73 +42,100 @@
 
         </header>
 
-        <!-- Bloco Hero -->
-        <div class="relative w-full -mt-10 overflow-hidden">
+        <main class="flex flex-col items-center justify-center w-full">
 
-            <!-- Camada de Texto -->
-            <div class="texto-class absolute top-0 left-0 w-full z-10">
-                <!-- Palavras -->
-                <div v-for="(palavra, index) in palavras" :key="index"
-                    class="texto mt-8 flex items-center justify-center">
-                    <template v-for="(letra, letraIndex) in palavra">
-                        <img :key="letraIndex" class="letra max-h-4 sm:max-h-6 md:max-h-10 lg:max-h-14 flex-1"
-                            :src="`./public/tipografia/${letra}.svg`" :alt="letra" />
-                    </template>
-                </div>
-            </div>
+            <!-- Bloco Hero -->
+            <div class="relative w-full -mt-10 overflow-hidden">
 
-            <!-- Contêiner das Imagens -->
-            <div id="carousel" class="flex transition-opacity duration-500" :style="{ opacity: currentImageOpacity }">
-                <img v-for="(image, index) in images" :key="index" :src="image" alt="Imagem"
-                    class="w-full flex-shrink-0" v-show="currentImageIndex === index">
-            </div>
-        </div>
-
-        <!-- Bloco Produtos -->
-        <div
-            class="bloco-produtos pt-40 w-full overflow-hidden bg-[url('./public/fundo.svg')] bg-no-repeat bg-top bg-cover">
-
-            <!-- Título -->
-            <h2 class="text-center text-3xl font-bold mb-24 hidden">Produtos</h2>
-            <h2 class="flex items-center justify-center mb-24">
-                <img class="h-6 sm:h-10 xl:h-12" src="./public/titulo_produtos.svg" alt="Título Produtos" />
-            </h2>
-
-            <!-- Grupo de produtos -->
-            <div class="produtos-class flex flex-col sm:flex-row flex-wrap items-center justify-center gap-14">
-                <div v-for="produto in produtos" :key="produto.id"
-                    class="produto-class w-[80svw] sm:w-1/3 xl:w-1/4 bg-gradient-to-tr from-[#9bd2f9] to-[#ddf2f5] rounded-2xl overflow-hidden shadow-[0_2px_20px_rgba(0,80,180,0.6)]">
-                    <div class="produto-fundo bg-[#bee1e7] rounded-lg overflow-hidden">
-                        <img class="produto-imagem w-full h-full object-cover" :src="produto.imagem"
-                            :alt="produto.titulo" />
-                    </div>
-                    <div class="flex flex-col p-6 italic">
-                        <h2 class="produto-titulo text-2xl">{{ produto.titulo }}</h2>
-                        <p class="produto-preco text-4xl">{{ produto.preco }}</p>
-                        <p class="produto-descricao text-base">{{ produto.descricao }}</p>
+                <!-- Camada de Texto -->
+                <div class="texto-class absolute top-0 left-0 w-full z-10">
+                    <!-- Palavras -->
+                    <div v-for="(palavra, index) in palavras" :key="index"
+                        class="texto mt-8 flex items-center justify-center">
+                        <template v-for="(letra, letraIndex) in palavra">
+                            <img :key="letraIndex" class="letra max-h-4 sm:max-h-6 md:max-h-10 lg:max-h-14 flex-1"
+                                :src="`./public/tipografia/${letra}.svg`" :alt="letra" />
+                        </template>
                     </div>
                 </div>
-                <!-- Grupo de produtos -->
-            </div>
 
-            <!-- Bloco Contato -->
-            <div class="flex items-center justify-center w-full my-40">
-                <button
-                    @click="window.open('https://wa.me/5562992101076?text=Ol%C3%A1,%20estou%20interessado%20em%20comprar%20gelo', '_blank')"
-                    class="flex items-center border-white border-8 gap-4 bg-[#6600ff] bg-gradient-to-r from-[#66ccff] to-[#0064b4] text-white font-bold text-3xl italic py-4 px-8 rounded-full transition-all transform hover:scale-95 shadow-[0_5px_50px_rgba(0,80,180,0.6)] hover:shadow-[0_5px_30px_rgba(0,80,180,0.7)] duration-300">
-                    <svg class="h-16" stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
-                        </path>
-                    </svg>
-                    62 99210 1076
-                </button>
-                <!-- Bloco Contato -->
+                <!-- Contêiner das Imagens -->
+                <div id="carousel" class="flex transition-opacity duration-500"
+                    :style="{ opacity: currentImageOpacity }">
+                    <img v-for="(image, index) in images" :key="index" :src="image" alt="Imagem"
+                        class="w-full flex-shrink-0" v-show="currentImageIndex === index">
+                </div>
+                <!-- Bloco Hero -->
             </div>
 
             <!-- Bloco Produtos -->
-        </div>
+            <div
+                class="bloco-produtos pt-40 w-full overflow-hidden bg-[url('./public/fundo.svg')] bg-no-repeat bg-top bg-cover">
+
+                <!-- Título -->
+                <h2 class="text-center text-3xl font-bold mb-24 hidden">Produtos</h2>
+                <h2 class="flex items-center justify-center mb-24">
+                    <img class="h-6 sm:h-10 xl:h-12" src="./public/titulo_produtos.svg" alt="Título Produtos" />
+                </h2>
+
+                <!-- Grupo de produtos -->
+                <div class="produtos-class flex flex-col sm:flex-row flex-wrap items-center justify-center gap-14">
+                    <div v-for="produto in produtos" :key="produto.id"
+                        class="produto-class w-[80svw] sm:w-1/3 xl:w-1/4 bg-gradient-to-tr from-[#9bd2f9] to-[#ddf2f5] rounded-2xl overflow-hidden shadow-[0_2px_20px_rgba(0,80,180,0.6)]">
+                        <div class="produto-fundo bg-[#bee1e7] rounded-lg overflow-hidden">
+                            <img class="produto-imagem w-full h-full object-cover" :src="produto.imagem"
+                                :alt="produto.titulo" />
+                        </div>
+                        <div class="flex flex-col p-6 italic">
+                            <h2 class="produto-titulo text-2xl">{{ produto.titulo }}</h2>
+                            <p class="produto-preco text-4xl">{{ produto.preco }}</p>
+                            <p class="produto-descricao text-base">{{ produto.descricao }}</p>
+                        </div>
+                    </div>
+                    <!-- Grupo de produtos -->
+                </div>
+
+                <!-- Bloco Contato -->
+                <div class="flex items-center justify-center w-full my-40">
+                    <button
+                        @click="window.open('https://wa.me/5562992101076?text=Ol%C3%A1,%20estou%20interessado%20em%20comprar%20gelo', '_blank')"
+                        class="flex items-center border-white border-8 gap-4 bg-[#6600ff] bg-gradient-to-r from-[#66ccff] to-[#0064b4] text-white font-bold text-3xl italic py-4 px-8 rounded-full transition-all transform hover:scale-95 shadow-[0_5px_50px_rgba(0,80,180,0.6)] hover:shadow-[0_5px_30px_rgba(0,80,180,0.7)] duration-300">
+                        <svg class="h-16" stroke="currentColor" fill="currentColor" strokeWidth="0"
+                            viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
+                            </path>
+                        </svg>
+                        62 99210 1076
+                    </button>
+                    <!-- Bloco Contato -->
+                </div>
+
+                <!-- Bloco Produtos -->
+            </div>
+
+            <!-- Bloco Localização -->
+            <div class="w-full py-40 bg-[#daf9ff]">
+                <h2 class="text-center text-3xl font-bold mb-24 hidden">Localização</h2>
+                <h2 class="flex items-center justify-center mb-24">
+                    <img class="h-6 md:h-12" src="./public/titulo_localizacao.svg" alt="Título Produtos" />
+                </h2>
+                <div class="flex justify-center w-full">
+                    <iframe width="100%" height="650"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d955.506069754556!2d-49.302651504641915!3d-16.675668451729855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef57aa5de8175%3A0x1c064782f47073ab!2sGelo%20Fonte%20Mineral%20Araguaia!5e0!3m2!1spt-BR!2sbr!4v1716929782315!5m2!1spt-BR!2sbr"
+                        style="border:0;" allowFullScreen="" loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <!-- Bloco Localização -->
+            </div>
+
+        </main>
+
+        <!-- Bloco Footer -->
+        <footer class="flex items-center justify-center py-16">
+            <img class="w-1/2" src="./public/logo.svg" alt="GFMalimentos" />
+        </footer>
+
     </div>
 
     <script>
