@@ -46,6 +46,10 @@
                 /* Rotação no sentido anti-horário */
             }
         }
+
+        .polygon-class {
+            clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
+        }
     </style>
 </head>
 
@@ -75,10 +79,10 @@
             <main class="flex flex-col items-center justify-center w-full">
 
                 <!-- Bloco Hero -->
-                <div class="relative w-full -mt-10 overflow-hidden">
+                <div class="hero-class polygon-class relative w-full -mt-10 overflow-hidden">
 
                     <!-- Camada de Texto -->
-                    <div class="texto-class absolute top-0 left-0 w-full z-10">
+                    <div class="texto-class absolute top-0 left-0 w-full z-10 -rotate-2">
                         <!-- Palavras -->
                         <div v-for="(palavra, index) in palavras" :key="index"
                             class="texto mt-8 flex items-center justify-center">
@@ -145,7 +149,7 @@
                 </div>
 
                 <!-- Bloco Localização -->
-                <div class="w-full py-40 bg-[#daf9ff]">
+                <div class="localizacao-class polygon-class w-full py-40 bg-[#daf9ff]">
                     <h2 class="text-center text-3xl font-bold mb-24 hidden">Localização</h2>
                     <h2 class="flex items-center justify-center mb-24">
                         <img class="h-6 md:h-12" src="./public/titulo_localizacao.svg" alt="Título Produtos" />
